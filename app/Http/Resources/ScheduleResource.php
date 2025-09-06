@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class ScheduleResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            'day'       => $this->day,
+            'time_from' => $this->time_from,
+            'time_to'   => $this->time_to,
+            'trainer'   => $this->trainer,
+            'activity'  => $this->activity?->name,
+        ];
+    }
+}

@@ -74,17 +74,12 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-    public function address()
-    {
-        return $this->morphOne(Address::class, 'addressable');
-    }
     public function getAvatarAttribute(): string
     {
         $name = str_replace(' ', '%20', $this->name);
         return $this->image ? asset('storage/' . $this->image) : "https://ui-avatars.com/api/?name={$name}&rounded=true";
     }
 
-    // relationships firebase_tokens
     public function firebase_tokens(): HasMany
     {
         return $this->hasMany(FirebaseToken::class, 'user_id', 'id');
@@ -93,7 +88,6 @@ class User extends Authenticatable implements FilamentUser
     public function updateUserDevice(): void
     {
         if (request()->device_id) {
-            // dd(request()->device_id);
             $this->firebase_tokens()->updateOrCreate([
                 'device_id' => request()->device_id,
                 'token_firebase' => request()->token_firebase,
@@ -103,8 +97,7 @@ class User extends Authenticatable implements FilamentUser
 
     private function activationCode(): int
     {
-        return 123456;
-        //return mt_rand(1111, 9999);
+        return mt_rand(1111, 9999);
     }
 
     public function sendEmailVerificationCode(): bool
@@ -128,20 +121,10 @@ class User extends Authenticatable implements FilamentUser
         return $token;
     }
 
-    public function addresses(): MorphMany
-    {
-        return $this->morphMany(Address::class, 'addressable');
-    }
-
 
 
     public function canAccessPanel(Panel $panel): bool
     {
         return in_array($this->type, ['employee', 'admin']);
     }
-
-    public function clubs()
-{
-    return $this->hasMany(Club::class, 'provider_id');
-}
 }

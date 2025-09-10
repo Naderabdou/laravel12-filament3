@@ -49,18 +49,18 @@ class AdminPanelProvider extends PanelProvider
                 ],
             ])
 
-            ->brandName(function () {
-                $locale = app()->getLocale();
-                $property = 'site_name_' . $locale;
-                return app(GeneralSettings::class)->$property;
-            })
+            // ->brandName(function () {
+            //     $locale = app()->getLocale();
+            //     $property = 'site_name_' . $locale;
+            //     return app(GeneralSettings::class)->$property;
+            // })
 
             //  ->brandLogo(fn () => view('filament.admin.logo'))
             // ->brandLogo(fn() => view('filament.admin.logoDark'))
-            ->brandLogo(asset('storage/' . app(GeneralSettings::class)->logo))
-            ->brandLogoHeight('3rem')
-
-            ->favicon(asset('storage/' . app(GeneralSettings::class)->favicon))
+            // ->brandLogo(asset('storage/' . app(GeneralSettings::class)->logo))
+            // ->brandLogoHeight('3rem')
+            
+            // ->favicon(asset('storage/' . app(GeneralSettings::class)->favicon))
             ->sidebarCollapsibleOnDesktop()
             ->databaseNotifications(true)
             ->databaseNotificationsPolling('80s')
@@ -101,6 +101,5 @@ class AdminPanelProvider extends PanelProvider
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
 
             ]);
-
     }
 }

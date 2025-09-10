@@ -26,5 +26,3 @@ Route::get('/privacy/en', function () {
 Route::namespace('Site')->name('site.')->middleware('lang')->group(function () {});
 
 
-Route::redirect('/login', '/admin/login')->name('login');
-Route::redirect('/', '/admin/login');

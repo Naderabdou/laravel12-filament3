@@ -16,6 +16,7 @@
         "cheesegrits/filament-google-maps": "^3.0",
         "eightynine/filament-advanced-widgets": "^3.0",
         "filament/filament": "^3.3",
+        "filament/spatie-laravel-media-library-plugin": "^3.2",
         "filament/spatie-laravel-settings-plugin": "*",
         "filament/tables": "*",
         "hasnayeen/themes": "^3.0",
